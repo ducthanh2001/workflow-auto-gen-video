@@ -1,0 +1,81 @@
+# Everything runs locally; ports are published on 127.0.0.1 only (single-user app, spec 3.4).
+x-app-env: &app-env
+  DATABASE_URL: postgres://vp:vp@postgres:5432/vp
+  REDIS_URL: redis://redis:6379
+  DATA_DIR: /data
+  CONFIG_DIR: /app/config
+  ASSETS_DIR: /app/assets
+  FFMPEG_PATH: /usr/local/bin/ffmpeg
+  FFPROBE_PATH: /usr/local/bin/ffprobe
+  # PROVIDERS=mock docker compose up  ->  try the whole UI without calling (or paying) any provider
+  PROVIDERS: ${PROVIDERS:-real}
+  OCR: ${OCR:-on}
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: vp
+      POSTGRES_PASSWORD: vp
+      POSTGRES_DB: vp
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vp -d vp"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  api:
+    build: { context: ., target: api }
+    env_file: [.env]
+    environment:
+      <<: *app-env
+      BIND_HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:${API_PORT:-4000}:4000"
+    volumes:
+      - data:/data
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    restart: unless-stopped
+
+  worker:
+    build: { context: ., target: worker }
+    env_file: [.env]
+    environment: *app-env
+    volumes:
+      - data:/data
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      api: { condition: service_started }   # the API runs the migrations
+    restart: unless-stopped
+
+  web:
+    build: { context: ., target: web }
+    env_file: [.env]
+    # the API address (http://api:4000) is baked into the image at build time (see Dockerfile)
+    ports:
+      - "127.0.0.1:${WEB_PORT:-3000}:3000"
+    depends_on: [api]
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:
+  data:

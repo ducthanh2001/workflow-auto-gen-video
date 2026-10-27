@@ -1,0 +1,73 @@
+name: stickman-sketch
+aspect: "16:9"
+
+# LOCK: pasted verbatim into every prompt that contains a character
+character_lock: >
+  The main character is a hand-drawn stick figure: a large round white head with a
+  clean black marker outline and a faint light-grey crescent of shading on one
+  side, two small black dot eyes, a small simple mouth, a thin black neck, a thin
+  black stick body, thin black stick arms and legs and simple rounded hands.
+  Keep this exact head shape, face style, proportions and line weight as in the
+  attached character sheet. The face shows the feeling of the scene (tired
+  half-closed eyes, a worried mouth, a small smile).
+
+# VARY: fields the planner fills per scene
+character_vary: [hair, outfit, props, expression, pose]
+
+signature: ""
+
+character_sheet_prompt: >
+  Character design sheet on a plain light-grey background, hand-drawn 2D
+  stick-figure explainer style with clean black marker outlines and flat colors.
+  One original character: a large round white head with a faint light-grey
+  crescent of shading on one side, two small black dot eyes, a small simple
+  mouth, thin black stick body, arms and legs, simple rounded hands. Show the
+  same character in 4 poses side by side: first standing neutral as the plain
+  bare stick figure, second tired with half-closed eyes and a slouch, third
+  wearing a simple brown fur tunic with messy brown hair, standing neutral,
+  fourth in the same fur tunic and messy brown hair, shrugging with open hands.
+  Same proportions and line weight in every pose. No text, no labels, no
+  watermark.
+
+# Four candidate style anchors drawn at the references step (characters: false = no person)
+anchor_scenes:
+  - visual: "A plain cream-coloured bedroom with a single bed, a small wooden bedside table with a red alarm clock, a window with pale blue light and a wooden floor, the main character standing next to the bed looking tired"
+    characters: true
+  - visual: "A dry open savanna at dusk with a peach-to-light-blue banded sky, a large grey rock, a small campfire ringed with stones and a wooden spear leaning on the rock, the main character wearing a brown fur tunic and messy brown hair lying back on a bed of straw, relaxed"
+    characters: true
+  - visual: "A split picture divided by a dashed line: on the left a white empty background where the main character is bent over, chained to a big wall clock; on the right a sunny savanna with a campfire where the main character in a brown fur tunic shrugs with a question mark above"
+    characters: true
+  - visual: "A wide dry savanna landscape at dusk with rolling brown hills, tufts of dry grass, a peach and light-blue banded sky, two simple tents made of sticks and hides and a campfire ringed with stones, no people"
+    characters: false
+
+prefix: >
+  Hand-drawn 2D whiteboard-doodle cartoon in a simple explainer style. Black
+  marker outlines with a slight wobble, flat muted fill colors, very light
+  shading. Backgrounds are simple and uncluttered with soft gradients: cream or
+  beige room walls with a pale window and a wooden floor, dusk skies in
+  horizontal peach and light-blue bands, dry brown savanna ground with small
+  grass tufts and a few big grey rocks, a warm earth-tone palette. Props are
+  simple and readable (a red alarm clock, a round wall clock with a brown frame,
+  a campfire ringed with stones, a wooden spear).
+
+suffix: >
+  Wide composition, one clear focal point, the character large enough to read
+  the expression, plenty of empty space, nothing important in the bottom fifth
+  of the picture, no text, no letters, no numbers, no logo, no watermark.
+
+camera_defaults:
+  push_in:   { zoomStart: 1.00, zoomEnd: 1.10 }
+  pull_out:  { zoomStart: 1.10, zoomEnd: 1.00 }
+  pan_left:  { zoom: 1.08, xFrom: 0.55, xTo: 0.45 }
+  pan_right: { zoom: 1.08, xFrom: 0.45, xTo: 0.55 }
+  tilt_up:   { zoom: 1.08, yFrom: 0.55, yTo: 0.45 }
+  tilt_down: { zoom: 1.08, yFrom: 0.45, yTo: 0.55 }
+
+captions:
+  font: "Inter"
+  size: 54
+  bold: true
+  outline: 3
+  marginV: 60
+  maxCharsPerLine: 42
+  maxLines: 2

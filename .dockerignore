@@ -1,0 +1,8 @@
+**/node_modules
+**/dist
+**/.next
+data
+.git
+*.log
+.env
+video-pipeline-spec*.md

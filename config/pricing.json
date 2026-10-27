@@ -1,0 +1,7 @@
+{
+  "_note": "Starting values from the spec. VERIFY on official pricing pages before relying on them.",
+  "tts": { "usdPerCredit": 0.0003, "creditsPerChar": { "eleven_multilingual_v2": 1, "eleven_flash_v2_5": 0.5, "eleven_turbo_v2_5": 0.5 } },
+  "image": { "usdPerImage": 0.067 },
+  "clip": { "usdPerSecond": { "veo-3.1-lite": 0.05, "kling-3.0": 0.15 } },
+  "llm": { "usdPerPlanCall": 0.15, "usdPerThumbConceptCall": 0.05 }
+}

@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6f6f4;
+  --panel: #ffffff;
+  --hover: #efeeea;
+  --line: #deddd7;
+  --text: #1c1b18;
+  --muted: #6b6a63;
+  --accent: #b8541c;
+}
+
+:root:not([data-theme="light"]) {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131211;
+    --panel: #1c1b19;
+    --hover: #272521;
+    --line: #35322d;
+    --text: #ecebe6;
+    --muted: #9b9990;
+    --accent: #e0793a;
+  }
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+textarea, input, select {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.875rem;
+}
+
+textarea:focus, input:focus, select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}

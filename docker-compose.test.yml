@@ -1,0 +1,11 @@
+# Throwaway Postgres + Redis for the server/API e2e tests (ports match the test defaults).
+#   pnpm services:up      pnpm test      pnpm services:down
+services:
+  test-postgres:
+    image: postgres:16-alpine
+    environment: { POSTGRES_USER: vp, POSTGRES_PASSWORD: vp, POSTGRES_DB: vp }
+    ports: ["127.0.0.1:54329:5432"]
+    tmpfs: ["/var/lib/postgresql/data"]
+  test-redis:
+    image: redis:7-alpine
+    ports: ["127.0.0.1:63799:6379"]

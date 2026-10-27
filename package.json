@@ -1,0 +1,20 @@
+{
+  "name": "script-to-video-studio",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.12.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm run build:packages && pnpm -r --filter \"./apps/*\" build",
+    "build:packages": "pnpm -r --filter \"./packages/*\" build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "doctor": "node scripts/vp-doctor.mjs",
+    "services:up": "docker compose -f docker-compose.test.yml up -d",
+    "services:down": "docker compose -f docker-compose.test.yml down -v",
+    "test:core": "pnpm --filter @vp/core test",
+    "smoke:live": "node scripts/smoke-live.mjs"
+  }
+}

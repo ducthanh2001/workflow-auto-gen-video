@@ -1,0 +1,10 @@
+{
+  "narrator_calm": {
+    "label": "Calm narrator",
+    "provider": "elevenlabs",
+    "voiceId": "J2FGlQG8Gd7x8uEDt2H8",
+    "model": "eleven_flash_v2_5",
+    "commercialUseConfirmed": true,
+    "settings": { "stability": 0.5, "similarity_boost": 0.75, "style": 0.0, "use_speaker_boost": true }
+  }
+}

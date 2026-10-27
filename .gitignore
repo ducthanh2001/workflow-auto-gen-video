@@ -1,0 +1,8 @@
+node_modules
+dist
+.next
+.env
+data
+*.log
+.turbo
+coverage

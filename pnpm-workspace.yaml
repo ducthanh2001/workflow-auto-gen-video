@@ -1,0 +1,8 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+onlyBuiltDependencies:
+  - sharp
+  - esbuild
+  - "@swc/core"
+  - unrs-resolver

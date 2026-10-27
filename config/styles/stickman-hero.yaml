@@ -1,0 +1,38 @@
+name: stickman-hero
+aspect: "16:9"
+
+# Character Style Lock v2 (packages/shared/src/characterLock.ts).
+# prefix, suffix, the hero lock and the character sheet prompt come from that file: do not copy them here.
+shared_lock: true
+
+character_vary: [hair, outfit, props, expression, pose]
+signature: ""
+
+# Four candidate style anchors drawn at the references step (characters: false = no person).
+# Backgrounds may differ per project; the hero comes only from the global hero sheet.
+anchor_scenes:
+  - visual: "A dry open savanna at dusk with a soft warm gradient sky, plain brown ground with a few grass tufts and two grey rocks, the main character in a ragged fur tunic standing and looking tired"
+    characters: true
+  - visual: "A plain cream-coloured bedroom with a single bed, a small wooden bedside table with a red alarm clock and a window with pale blue light, the main character in a plain blue t-shirt sitting on the edge of the bed, sleepy"
+    characters: true
+  - visual: "A small camp on a grassy plain in the afternoon: a campfire ringed with a few grey stones, a wooden spear leaning on a big rock, the main character in a ragged fur tunic sitting by the fire, calm"
+    characters: true
+  - visual: "A wide empty plain with rolling hills under a gentle peach-to-light-blue gradient sky, a few grass tufts and one lone tree, no people"
+    characters: false
+
+camera_defaults:
+  push_in:   { zoomStart: 1.00, zoomEnd: 1.10 }
+  pull_out:  { zoomStart: 1.10, zoomEnd: 1.00 }
+  pan_left:  { zoom: 1.08, xFrom: 0.55, xTo: 0.45 }
+  pan_right: { zoom: 1.08, xFrom: 0.45, xTo: 0.55 }
+  tilt_up:   { zoom: 1.08, yFrom: 0.55, yTo: 0.45 }
+  tilt_down: { zoom: 1.08, yFrom: 0.45, yTo: 0.55 }
+
+captions:
+  font: "Inter"
+  size: 54
+  bold: true
+  outline: 3
+  marginV: 60
+  maxCharsPerLine: 42
+  maxLines: 2

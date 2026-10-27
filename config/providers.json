@@ -1,0 +1,8 @@
+{
+  "tts": { "provider": "elevenlabs", "concurrency": 3 },
+  "image": { "provider": "gemini", "concurrency": 4, "variants": 1, "upscaleTo": [3840, 2160] },
+  "video": { "provider": "fal", "model": "fal-ai/kling-video/v3/standard/image-to-video", "clipSeconds": 5, "concurrency": 2 },
+  "planner": { "provider": "anthropic", "maxVerbatimRetries": 2, "defaultCamera": "static", "defaultTransition": "dissolve" },
+  "timeline": { "fps": 30, "lead": 0.2, "tail": 0.3, "tailBeat": 0.6, "transition": 0.4, "chunkSize": 12 },
+  "audio": { "musicGainDb": -18, "musicFadeIn": 2, "musicFadeOut": 3, "targetLufs": -14, "truePeak": -1.5, "lra": 11 }
+}

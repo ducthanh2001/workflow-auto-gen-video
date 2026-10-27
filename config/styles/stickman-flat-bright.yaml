@@ -1,0 +1,68 @@
+name: stickman-flat-bright
+aspect: "16:9"
+
+# LOCK: pasted verbatim into every prompt that contains a character
+character_lock: >
+  The main character is a simple stick-figure explainer character: a white round
+  head with a clean thick black outline, two small black dot eyes, simple
+  expressive eyebrows and a small curved mouth, shaggy messy brown hair, thin
+  black stick arms and legs, simple rounded hands, flat colors with no shading.
+  Keep this exact head shape, face style, proportions and line weight as in the
+  attached character sheet.
+
+# VARY: fields the planner fills per scene
+character_vary: [hair, outfit, props, expression, pose]
+
+signature: ""
+
+character_sheet_prompt: >
+  Character design sheet on a plain light-grey background, flat 2D cartoon
+  stick-figure explainer style, clean thick black outlines, flat colors. One
+  original character: a white round head with a thick black outline, two small
+  black dot eyes, simple expressive eyebrows, a small curved mouth, shaggy messy
+  brown hair, a simple brown fur tunic, thin black stick arms and legs, simple
+  rounded hands. Show the same character in 4 poses side by side (standing
+  neutral, waving, thinking with a hand on chin, relaxing with hands behind the
+  head and a content smile). Same proportions and line weight in every pose. No
+  text, no labels, no watermark.
+
+# Four candidate style anchors drawn at the references step (characters: false = no person)
+anchor_scenes:
+  - visual: "A sunny open grassland with a few simple trees, the main character standing on a big grey rock and looking at the horizon"
+    characters: true
+  - visual: "A bright hillside meadow under a blue sky, the main character relaxing on the grass under a lone tree with hands behind the head"
+    characters: true
+  - visual: "A small camp beside a calm river in daylight, the main character sitting by a little campfire, simple rocks and bushes around"
+    characters: true
+  - visual: "A wide open savanna landscape with a yellow sun, white clouds, rolling green hills, an acacia tree and a few rocks, no people"
+    characters: false
+
+prefix: >
+  Flat 2D vector-style cartoon illustration in a bright, cheerful daylight look.
+  Clean thick black outlines on characters and thin soft dark outlines on
+  objects, flat saturated colors with at most very light cell shading, simple
+  hand-drawn shapes. Backgrounds are simple and open, with a pale blue sky, a few
+  white clouds, a yellow sun, rolling green grass, a few simple trees and rocks,
+  minimal detail and large readable shapes. Warm, sunny, friendly mood.
+
+suffix: >
+  Wide composition, one clear focal point, characters large enough to read the
+  expression, uncluttered, nothing important in the bottom fifth of the picture,
+  no text, no letters, no numbers, no logo, no watermark.
+
+camera_defaults:
+  push_in:   { zoomStart: 1.00, zoomEnd: 1.10 }
+  pull_out:  { zoomStart: 1.10, zoomEnd: 1.00 }
+  pan_left:  { zoom: 1.08, xFrom: 0.55, xTo: 0.45 }
+  pan_right: { zoom: 1.08, xFrom: 0.45, xTo: 0.55 }
+  tilt_up:   { zoom: 1.08, yFrom: 0.55, yTo: 0.45 }
+  tilt_down: { zoom: 1.08, yFrom: 0.45, yTo: 0.55 }
+
+captions:
+  font: "Inter"
+  size: 54
+  bold: true
+  outline: 3
+  marginV: 60
+  maxCharsPerLine: 42
+  maxLines: 2
